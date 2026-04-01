@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
     public Map<String, String> tratarRuntime(RuntimeException ex) {
         Map<String, String> erro = new HashMap<>();
 
-        erro.put("Com problemas?", "Better call Saul!");
+        erro.put("Erro", ex.getMessage());
         return erro;
     }
 
