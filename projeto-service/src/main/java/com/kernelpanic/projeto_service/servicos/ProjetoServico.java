@@ -13,6 +13,7 @@ import com.kernelpanic.projeto_service.entidades.Projeto;
 import com.kernelpanic.projeto_service.modelo.ProjetoAtualizador;
 import com.kernelpanic.projeto_service.modelo.ProjetoSelecionador;
 import com.kernelpanic.projeto_service.repositorios.ProjetoRepositorio;
+import com.kernelpanic.projeto_service.excecoes.EntidadeNaoEncontradaException;
 
 @Service
 public class ProjetoServico {
