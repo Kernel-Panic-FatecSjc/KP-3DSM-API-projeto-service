@@ -10,10 +10,10 @@ import com.kernelpanic.projeto_service.dtos.ProjetoAtualizarDTO;
 import com.kernelpanic.projeto_service.dtos.ProjetoCadastrarDTO;
 import com.kernelpanic.projeto_service.dtos.ProjetoExibirDTO;
 import com.kernelpanic.projeto_service.entidades.Projeto;
-import com.kernelpanic.projeto_service.excecoes.EntidadeNaoEncontradaException;
 import com.kernelpanic.projeto_service.modelo.ProjetoAtualizador;
 import com.kernelpanic.projeto_service.modelo.ProjetoSelecionador;
 import com.kernelpanic.projeto_service.repositorios.ProjetoRepositorio;
+import com.kernelpanic.projeto_service.excecoes.EntidadeNaoEncontradaException;
 
 @Service
 public class ProjetoServico {
