@@ -14,6 +14,8 @@ public class ProjetoCadastrarDTO {
     @Size(max = 100, message = "O nome não pode exceder 100 caracteres")
     private String nome;
     
+    private String status;
+
     @Size(max = 300, message = "A descrição não pode exceder 300 caracteres")
     private String descricao;
     

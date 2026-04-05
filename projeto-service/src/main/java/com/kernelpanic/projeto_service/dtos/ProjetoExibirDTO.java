@@ -15,6 +15,8 @@ public class ProjetoExibirDTO {
     private String nome;
     
     private String descricao;
+
+    private String status;
     
     private LocalDateTime prazo;
     

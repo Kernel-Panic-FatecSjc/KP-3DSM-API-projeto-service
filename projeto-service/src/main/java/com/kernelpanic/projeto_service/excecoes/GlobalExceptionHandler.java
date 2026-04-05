@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(EntidadeNaoEncontradaException.class)
     public ResponseEntity<ErroRespostaDTO> tratarEntidadeNaoEncontrada(EntidadeNaoEncontradaException ex) {
         ErroRespostaDTO erro = new ErroRespostaDTO(
-            HttpStatus.NOT_FOUND.value(),
+            String.valueOf(HttpStatus.NOT_FOUND.value()),
             ex.getMessage(),
             ex.getDescricao()
         );
@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
         });
 
         ErroRespostaDTO erro = new ErroRespostaDTO(
-            HttpStatus.BAD_REQUEST.value(),
+            String.valueOf(HttpStatus.NOT_FOUND.value()),
             "Erro de validação",
             descricao.toString()
         );
@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErroRespostaDTO> tratarRuntime(RuntimeException ex) {
         ErroRespostaDTO erro = new ErroRespostaDTO(
-            HttpStatus.INTERNAL_SERVER_ERROR.value(),
+            String.valueOf(HttpStatus.NOT_FOUND.value()),
             "Erro interno do servidor",
             ex.getMessage()
         );

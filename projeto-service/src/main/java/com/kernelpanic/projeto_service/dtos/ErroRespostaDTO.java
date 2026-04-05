@@ -12,14 +12,14 @@ public class ErroRespostaDTO {
     private LocalDateTime timestamp;
     
     @NotNull(message = "O status é obrigatório")
-    private Integer status;
+    private String status;
     
     @NotBlank(message = "A mensagem é obrigatória")
     private String mensagem;
-    
+
     private String descricao;
 
-    public ErroRespostaDTO(Integer status, String mensagem, String descricao) {
+    public ErroRespostaDTO(String status, String mensagem, String descricao) {
         this.timestamp = LocalDateTime.now();
         this.status = status;
         this.mensagem = mensagem;

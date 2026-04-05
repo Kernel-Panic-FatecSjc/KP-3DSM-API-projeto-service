@@ -29,6 +29,9 @@ public class Projeto {
     
     @Column(name = "descricao", length = 300)
     private String descricao;
+
+    @Column(name = "status", length = 300)
+    private String status;
     
     @Column(name = "prazo")
     private LocalDateTime prazo;
