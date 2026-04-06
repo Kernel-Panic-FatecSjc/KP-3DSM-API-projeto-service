@@ -73,6 +73,7 @@ public class ProjetoServico {
         dto.setId(projeto.getId());
         dto.setNome(projeto.getNome());
         dto.setDescricao(projeto.getDescricao());
+        dto.setStatus(projeto.getStatus());
         dto.setPrazo(projeto.getPrazo());
         dto.setDataCriacao(projeto.getDataCriacao());
         return dto;
