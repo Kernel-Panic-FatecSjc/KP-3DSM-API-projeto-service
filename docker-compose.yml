@@ -1,0 +1,32 @@
+services:
+  db-projetos:
+    image: mysql:8.0
+    container_name: db-projetos
+    environment:
+      MYSQL_DATABASE: db_kernelpanic
+      MYSQL_ROOT_PASSWORD: senha
+    ports:
+      - "3038:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api-projetos:
+    build: . # Indica que o Dockerfile está nesta mesma pasta
+    container_name: spring-api-container
+    ports:
+      - "8082:8082"
+    depends_on:
+      db-projetos:
+        condition: service_healthy
+    volumes:
+      # Sincroniza a subpasta de código com o container
+      - ./projeto-service:/app 
+      # Cache do Maven para não baixar tudo toda vez que subir
+      - ~/.m2:/root/.m2
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-projetos:3306/db_kernelpanic?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=senha
