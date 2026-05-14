@@ -19,5 +19,9 @@ public class ProjetoAtualizador {
         if (atualizacao.getPrazo() != null) {
             projetoAtual.setPrazo(atualizacao.getPrazo());
         }
+
+        if (atualizacao.getValorContratado() != null) {
+            projetoAtual.setValorContratado(atualizacao.getValorContratado());
+        }
     }
 }

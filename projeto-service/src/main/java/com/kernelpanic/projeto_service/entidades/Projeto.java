@@ -35,7 +35,10 @@ public class Projeto {
     
     @Column(name = "prazo")
     private LocalDateTime prazo;
-    
+
+    @Column(name = "valor_contratado")
+    private Float valorContratado;
+
     @CreationTimestamp
     @Column(name = "data_criacao", nullable = false, updatable = false)
     private LocalDateTime dataCriacao;

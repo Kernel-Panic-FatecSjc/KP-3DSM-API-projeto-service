@@ -25,4 +25,6 @@ public class ProjetoAtualizarDTO {
     
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime prazo;
+
+    private Float valorContratado;
 }

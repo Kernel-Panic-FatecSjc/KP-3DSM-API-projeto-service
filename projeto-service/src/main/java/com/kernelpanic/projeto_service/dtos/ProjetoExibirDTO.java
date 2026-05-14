@@ -19,7 +19,9 @@ public class ProjetoExibirDTO {
     private String status;
     
     private LocalDateTime prazo;
-    
+
+    private Float valorContratado;
+
     @NotNull(message = "A data de criação é obrigatória")
     private LocalDateTime dataCriacao;
 }
