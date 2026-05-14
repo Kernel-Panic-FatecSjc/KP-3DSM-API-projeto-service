@@ -1,6 +1,7 @@
 package com.kernelpanic.projeto_service.dtos;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -19,8 +20,11 @@ public class ProjetoCadastrarDTO {
     @Size(max = 300, message = "A descrição não pode exceder 300 caracteres")
     private String descricao;
     
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime prazo;
 
     private Float valorContratado;
+
+    private Long responsavelId;
+    private List<Long> profissionaisIds;
 }

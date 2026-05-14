@@ -1,6 +1,7 @@
 package com.kernelpanic.projeto_service.dtos;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -11,20 +12,25 @@ import lombok.Data;
 
 @Data
 public class ProjetoAtualizarDTO {
-    @NotNull(message = "O ID do projeto é obrigatório")
+
+    @NotNull
     private Long id;
-    
-    @NotBlank(message = "O nome do projeto é obrigatório")
-    @Size(max = 100, message = "O nome não pode exceder 100 caracteres")
+
+    @NotBlank
+    @Size(max = 100)
     private String nome;
 
     private String status;
-    
-    @Size(max = 300, message = "A descrição não pode exceder 300 caracteres")
+
+    @Size(max = 300)
     private String descricao;
-    
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime prazo;
 
     private Float valorContratado;
+
+    private Long responsavelId;
+
+    private List<Long> profissionaisIds;
 }

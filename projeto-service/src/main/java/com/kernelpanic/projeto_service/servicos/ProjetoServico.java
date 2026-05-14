@@ -77,6 +77,8 @@ public class ProjetoServico {
         dto.setPrazo(projeto.getPrazo());
         dto.setValorContratado(projeto.getValorContratado());
         dto.setDataCriacao(projeto.getDataCriacao());
+        dto.setResponsavelId(projeto.getResponsavelId());
+        dto.setProfissionaisIds(projeto.getProfissionaisIds());
         return dto;
     }
 
@@ -85,8 +87,10 @@ public class ProjetoServico {
         projeto.setNome(dto.getNome());
         projeto.setDescricao(dto.getDescricao());
         projeto.setPrazo(dto.getPrazo());
+        projeto.setStatus(dto.getStatus());
         projeto.setValorContratado(dto.getValorContratado());
-
+        projeto.setResponsavelId(dto.getResponsavelId());
+        projeto.setProfissionaisIds(dto.getProfissionaisIds());
         this.cadastrar(projeto);
     }
 
@@ -95,9 +99,11 @@ public class ProjetoServico {
         projeto.setId(id);
         projeto.setNome(dto.getNome());
         projeto.setDescricao(dto.getDescricao());
+        projeto.setStatus(dto.getStatus());
         projeto.setPrazo(dto.getPrazo());
         projeto.setValorContratado(dto.getValorContratado());
-
+        projeto.setResponsavelId(dto.getResponsavelId());
+        projeto.setProfissionaisIds(dto.getProfissionaisIds());
         this.atualizar(projeto);
     }
 }

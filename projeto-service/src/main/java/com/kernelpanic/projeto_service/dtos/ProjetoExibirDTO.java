@@ -1,6 +1,7 @@
 package com.kernelpanic.projeto_service.dtos;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -24,4 +25,7 @@ public class ProjetoExibirDTO {
 
     @NotNull(message = "A data de criação é obrigatória")
     private LocalDateTime dataCriacao;
+
+    private Long responsavelId; 
+    private List<Long> profissionaisIds;
 }
