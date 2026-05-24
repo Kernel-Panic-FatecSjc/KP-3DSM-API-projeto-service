@@ -15,6 +15,14 @@ public class ProjetoAtualizador {
         if (atualizacao.getDescricao() != null && !atualizacao.getDescricao().isEmpty()) {
             projetoAtual.setDescricao(atualizacao.getDescricao());
         }
+
+        if (atualizacao.getStatus() != null && !atualizacao.getStatus().isEmpty()) {
+            projetoAtual.setStatus(atualizacao.getStatus());
+        }
+
+        if (atualizacao.getValorContratado() != null) {
+            projetoAtual.setValorContratado(atualizacao.getValorContratado());
+        }
         
         if (atualizacao.getPrazo() != null) {
             projetoAtual.setPrazo(atualizacao.getPrazo());

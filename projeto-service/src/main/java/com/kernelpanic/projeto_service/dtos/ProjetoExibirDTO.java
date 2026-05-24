@@ -1,5 +1,6 @@
 package com.kernelpanic.projeto_service.dtos;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.NotBlank;
@@ -17,6 +18,8 @@ public class ProjetoExibirDTO {
     private String descricao;
 
     private String status;
+
+    private BigDecimal valorContratado;
     
     private LocalDateTime prazo;
     

@@ -1,5 +1,6 @@
 package com.kernelpanic.projeto_service.entidades;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -32,6 +33,9 @@ public class Projeto {
 
     @Column(name = "status", length = 300)
     private String status;
+
+    @Column(name = "valor_contratado", precision = 14, scale = 2)
+    private BigDecimal valorContratado;
     
     @Column(name = "prazo")
     private LocalDateTime prazo;
