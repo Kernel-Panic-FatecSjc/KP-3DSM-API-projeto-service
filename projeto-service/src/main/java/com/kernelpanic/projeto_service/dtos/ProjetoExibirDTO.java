@@ -26,6 +26,9 @@ public class ProjetoExibirDTO {
     @NotNull(message = "A data de criação é obrigatória")
     private LocalDateTime dataCriacao;
 
+    private LocalDateTime dataInicio;
+    private LocalDateTime dataFim;
+
     private Long responsavelId; 
     private List<Long> profissionaisIds;
 }

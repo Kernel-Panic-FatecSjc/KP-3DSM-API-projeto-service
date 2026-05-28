@@ -1,5 +1,6 @@
 package com.kernelpanic.projeto_service.servicos;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,10 +11,10 @@ import com.kernelpanic.projeto_service.dtos.ProjetoAtualizarDTO;
 import com.kernelpanic.projeto_service.dtos.ProjetoCadastrarDTO;
 import com.kernelpanic.projeto_service.dtos.ProjetoExibirDTO;
 import com.kernelpanic.projeto_service.entidades.Projeto;
+import com.kernelpanic.projeto_service.excecoes.EntidadeNaoEncontradaException;
 import com.kernelpanic.projeto_service.modelo.ProjetoAtualizador;
 import com.kernelpanic.projeto_service.modelo.ProjetoSelecionador;
 import com.kernelpanic.projeto_service.repositorios.ProjetoRepositorio;
-import com.kernelpanic.projeto_service.excecoes.EntidadeNaoEncontradaException;
 
 @Service
 public class ProjetoServico {
@@ -77,6 +78,8 @@ public class ProjetoServico {
         dto.setPrazo(projeto.getPrazo());
         dto.setValorContratado(projeto.getValorContratado());
         dto.setDataCriacao(projeto.getDataCriacao());
+        dto.setDataInicio(projeto.getDataCriacao());
+        dto.setDataFim(projeto.getPrazo());
         dto.setResponsavelId(projeto.getResponsavelId());
         dto.setProfissionaisIds(projeto.getProfissionaisIds());
         return dto;
@@ -105,5 +108,26 @@ public class ProjetoServico {
         projeto.setResponsavelId(dto.getResponsavelId());
         projeto.setProfissionaisIds(dto.getProfissionaisIds());
         this.atualizar(projeto);
+    }
+
+    public List<ProjetoExibirDTO> obterProjetosPorProfissional(Long profissionalId) {
+        List<Projeto> projetos = repositorio.findByProfissionalId(profissionalId);
+        return projetos.stream()
+                .map(this::converterParaExibirDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProjetoExibirDTO> obterProjetosPorProfissionalComPeriodo(
+            Long profissionalId, 
+            LocalDateTime dataInicio, 
+            LocalDateTime dataFim) {
+        List<Projeto> projetos = repositorio.findByProfissionalIdAndDateRange(
+            profissionalId, 
+            dataInicio, 
+            dataFim
+        );
+        return projetos.stream()
+                .map(this::converterParaExibirDTO)
+                .collect(Collectors.toList());
     }
 }
