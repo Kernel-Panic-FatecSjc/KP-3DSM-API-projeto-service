@@ -12,8 +12,11 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+
   api-projetos:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: spring-api-container
     ports:
       - "8082:8082"
@@ -21,7 +24,7 @@ services:
       db-projetos:
         condition: service_healthy
     volumes:
-      - ./projeto-service:/app
+      - ./projeto-service:/app/projeto-service
       - ~/.m2:/root/.m2
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db-projetos:3306/db_kernelpanic?createDatabaseIfNotExist=true
