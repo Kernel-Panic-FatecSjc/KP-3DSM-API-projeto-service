@@ -12,11 +12,11 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+    networks:
+      - kp-network
 
   api-projetos:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: . # Indica que o Dockerfile está nesta mesma pasta
     container_name: spring-api-container
     ports:
       - "8082:8082"
@@ -24,9 +24,17 @@ services:
       db-projetos:
         condition: service_healthy
     volumes:
-      - ./projeto-service:/app/projeto-service
+      # Sincroniza a subpasta de códiago com o container
+      - ./projeto-service:/app 
+      # Cache do Maven para não baixar tudo toda vez que subir
       - ~/.m2:/root/.m2
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db-projetos:3306/db_kernelpanic?createDatabaseIfNotExist=true
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=senha
+    networks:
+      - kp-network
+
+networks:
+  kp-network:
+    external: true
