@@ -75,6 +75,7 @@ public class ProjetoServico {
         dto.setNome(projeto.getNome());
         dto.setDescricao(projeto.getDescricao());
         dto.setStatus(projeto.getStatus());
+        dto.setValorContratado(projeto.getValorContratado());
         dto.setPrazo(projeto.getPrazo());
         dto.setValorContratado(projeto.getValorContratado());
         dto.setDataCriacao(projeto.getDataCriacao());
@@ -89,6 +90,8 @@ public class ProjetoServico {
         Projeto projeto = new Projeto();
         projeto.setNome(dto.getNome());
         projeto.setDescricao(dto.getDescricao());
+        projeto.setStatus(dto.getStatus());
+        projeto.setValorContratado(dto.getValorContratado());
         projeto.setPrazo(dto.getPrazo());
         projeto.setStatus(dto.getStatus());
         projeto.setValorContratado(dto.getValorContratado());
@@ -103,6 +106,7 @@ public class ProjetoServico {
         projeto.setNome(dto.getNome());
         projeto.setDescricao(dto.getDescricao());
         projeto.setStatus(dto.getStatus());
+        projeto.setValorContratado(dto.getValorContratado());
         projeto.setPrazo(dto.getPrazo());
         projeto.setValorContratado(dto.getValorContratado());
         projeto.setResponsavelId(dto.getResponsavelId());

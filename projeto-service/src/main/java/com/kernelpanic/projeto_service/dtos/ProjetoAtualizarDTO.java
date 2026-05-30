@@ -1,5 +1,6 @@
 package com.kernelpanic.projeto_service.dtos;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -22,7 +24,10 @@ public class ProjetoAtualizarDTO {
 
     private String status;
 
-    @Size(max = 300)
+    @PositiveOrZero(message = "O valor contratado nao pode ser negativo")
+    private BigDecimal valorContratado;
+    
+    @Size(max = 300, message = "A descrição não pode exceder 300 caracteres")
     private String descricao;
 
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
