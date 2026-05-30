@@ -1,5 +1,8 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
+TRUNCATE TABLE projeto_profissionais;
+TRUNCATE TABLE projetos;
+
 INSERT INTO projetos (id, nome, descricao, status, prazo, valor_contratado, data_criacao, responsavel_id)
 VALUES
   (1, 'Site Institucional', 'Criação do site da empresa', 'EM_ANDAMENTO', '2025-12-31 18:00:00', 15000.00, NOW(), 1),
