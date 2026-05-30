@@ -28,8 +28,6 @@ public class ProjetoCadastrarDTO {
    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime prazo;
 
-    private Float valorContratado;
-
     private Long responsavelId;
     private List<Long> profissionaisIds;
 }

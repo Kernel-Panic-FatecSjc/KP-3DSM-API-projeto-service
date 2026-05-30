@@ -24,9 +24,7 @@ services:
       db-projetos:
         condition: service_healthy
     volumes:
-      # Sincroniza a subpasta de códiago com o container
-      - ./projeto-service:/app 
-      # Cache do Maven para não baixar tudo toda vez que subir
+      - ./projeto-service:/app/projeto-service
       - ~/.m2:/root/.m2
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db-projetos:3306/db_kernelpanic?createDatabaseIfNotExist=true
