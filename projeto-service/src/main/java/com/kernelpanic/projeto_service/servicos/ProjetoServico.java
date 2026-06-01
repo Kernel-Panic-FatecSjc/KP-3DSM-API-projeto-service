@@ -2,6 +2,7 @@ package com.kernelpanic.projeto_service.servicos;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -100,7 +101,7 @@ public class ProjetoServico {
         dto.setDataInicio(projeto.getDataCriacao());
         dto.setDataFim(projeto.getPrazo());
         dto.setResponsavelId(projeto.getResponsavelId());
-        dto.setProfissionaisIds(projeto.getProfissionaisIds());
+        dto.setProfissionaisIds(projeto.getProfissionaisIds() != null ? new ArrayList<>(projeto.getProfissionaisIds()) : new ArrayList<>());
         return dto;
     }
 
