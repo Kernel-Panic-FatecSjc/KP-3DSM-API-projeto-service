@@ -12,6 +12,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+    networks:
+      - kp-network
 
   api-projetos:
     build: . # Indica que o Dockerfile está nesta mesma pasta
@@ -22,11 +24,17 @@ services:
       db-projetos:
         condition: service_healthy
     volumes:
-      # Sincroniza a subpasta de código com o container
-      - ./projeto-service:/app 
-      # Cache do Maven para não baixar tudo toda vez que subir
+      - ./projeto-service:/app/projeto-service
       - ~/.m2:/root/.m2
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db-projetos:3306/db_kernelpanic?createDatabaseIfNotExist=true
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=senha
+      - APONTAMENTO_HORAS_URL=http://apontamento-service:8084
+      - USUARIO_SERVICE_URL=http://usuario-service-app:8083
+    networks:
+      - kp-network
+
+networks:
+  kp-network:
+    external: true
