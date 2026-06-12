@@ -7,6 +7,15 @@ import org.springframework.data.repository.query.Param;
 import com.kernelpanic.projeto_service.entidades.Projeto;
 
 public interface ProjetoRepositorio extends JpaRepository<Projeto, Long> {
+
+    @Query("""
+            SELECT p.id AS id,
+                   p.nome AS nome,
+                   p.status AS status,
+                   p.valorContratado AS valorContratado
+            FROM Projeto p
+            """)
+    List<ProjetoFinanceiroProjection> buscarProjetosParaPainelFinanceiro();
     
     @Query("SELECT DISTINCT p FROM Projeto p LEFT JOIN p.profissionaisIds pid WHERE pid = :profissionalId OR p.responsavelId = :profissionalId")
     List<Projeto> findByProfissionalId(@Param("profissionalId") Long profissionalId);
