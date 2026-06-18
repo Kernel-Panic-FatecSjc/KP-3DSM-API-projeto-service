@@ -7,6 +7,8 @@ services:
       MYSQL_ROOT_PASSWORD: senha
     ports:
       - "3038:3306"
+    volumes:
+      - projeto_mysql_data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 5s
@@ -34,6 +36,10 @@ services:
       - USUARIO_SERVICE_URL=http://usuario-service-app:8083
     networks:
       - kp-network
+
+volumes:
+  projeto_mysql_data:
+    name: projeto_mysql_data
 
 networks:
   kp-network:
