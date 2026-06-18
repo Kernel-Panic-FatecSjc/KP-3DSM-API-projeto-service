@@ -105,7 +105,7 @@ public class ProjetoServico {
         return dto;
     }
 
-    public void cadastrarViaDTO(ProjetoCadastrarDTO dto) {
+    public ProjetoExibirDTO cadastrarViaDTO(ProjetoCadastrarDTO dto) {
         Projeto projeto = new Projeto();
         projeto.setNome(dto.getNome());
         projeto.setDescricao(dto.getDescricao());
@@ -120,6 +120,8 @@ public class ProjetoServico {
 
         auditoria.registrar(projeto.getId(), projeto.getNome(),
                 TipoEventoFinanceiro.PROJETO_CRIADO, "Projeto cadastrado", projeto.getValorContratado());
+
+        return converterParaExibirDTO(projeto);
     }
 
     public void atualizarViaDTO(Long id, ProjetoAtualizarDTO dto) {
