@@ -20,7 +20,7 @@ public interface ProjetoRepositorio extends JpaRepository<Projeto, Long> {
     @Query("SELECT DISTINCT p FROM Projeto p LEFT JOIN p.profissionaisIds pid WHERE pid = :profissionalId OR p.responsavelId = :profissionalId")
     List<Projeto> findByProfissionalId(@Param("profissionalId") Long profissionalId);
     
-    @Query("SELECT DISTINCT p FROM Projeto p LEFT JOIN p.profissionaisIds pid WHERE (pid = :profissionalId OR p.responsavelId = :profissionalId) AND (:dataInicio IS NULL OR p.dataCriacao >= :dataInicio) AND (:dataFim IS NULL OR p.prazo <= :dataFim)")
+    @Query("SELECT DISTINCT p FROM Projeto p LEFT JOIN p.profissionaisIds pid WHERE (pid = :profissionalId OR p.responsavelId = :profissionalId) AND (:dataInicio IS NULL OR p.prazo IS NULL OR p.prazo >= :dataInicio) AND (:dataFim IS NULL OR p.dataCriacao <= :dataFim)")
     List<Projeto> findByProfissionalIdAndDateRange(
             @Param("profissionalId") Long profissionalId,
             @Param("dataInicio") LocalDateTime dataInicio,
